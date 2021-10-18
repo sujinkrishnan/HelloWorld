@@ -1,0 +1,28 @@
+version: '3'
+services:
+  happy-server:
+    container_name: happy-container
+    build:
+      context: HappyPod
+      dockerfile: Dockerfile
+    image: happy-image:v1
+  sad-server:
+    container_name: sad-container
+    build:
+      context: SadPod
+      dockerfile: Dockerfile
+    image: sad-image:v1
+  message-controller-pod:
+    container_name: message-controller-container
+    build:
+      context: MessageControllerPod
+      dockerfile: Dockerfile
+    image: message-controller-image:v1
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '8080:8080'
+

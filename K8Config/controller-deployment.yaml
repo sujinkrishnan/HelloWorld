@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: controllerpod
+  template:
+    metadata:
+      labels:
+        component: controllerpod
+    spec:
+      containers:
+        - name: controller-container
+          image: sujinkrishnan/my-docker-poc:message-controller-image
+          ports:
+            - containerPort: 8081

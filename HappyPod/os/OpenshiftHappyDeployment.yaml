@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: happy-service
+  namespace: sujinkrishnanu-dev
+spec:
+  selector:
+    matchLabels:
+      app: happy-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: happy-service
+    spec:
+      containers:
+        - name: happy-service
+          image: >-
+            sujinkrishnan/my-docker-poc:happy-image
+          ports:
+            - containerPort: 9091

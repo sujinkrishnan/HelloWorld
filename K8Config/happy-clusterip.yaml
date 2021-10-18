@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: happy-container
+spec:
+  type: ClusterIP
+  selector:
+    component: happyPod
+  ports:
+    - port: 9090
+      targetPort: 9090

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: happy-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: happyPod
+  template:
+    metadata:
+      labels:
+        component: happyPod
+    spec:
+      containers:
+        - name: happy-container
+          image: sujinkrishnan/my-docker-poc:happy-image
+          ports:
+            - containerPort: 9090

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HappyPod/HappyApp.iml" filepath="$PROJECT_DIR$/HappyPod/HappyApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MessageControllerPod/MessageControllerApp.iml" filepath="$PROJECT_DIR$/MessageControllerPod/MessageControllerApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyDockerPoc.iml" filepath="$PROJECT_DIR$/MyDockerPoc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SadPod/SadApp.iml" filepath="$PROJECT_DIR$/SadPod/SadApp.iml" />
+    </modules>
+  </component>
+</project>

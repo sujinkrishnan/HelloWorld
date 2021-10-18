@@ -1,0 +1,20 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: nginx
+  namespace: sujinkrishnanu-dev
+spec:
+  selector:
+    app: httpd
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: >-
+            sujinkrishnan/my-docker-poc:messagenginx-v2
+          ports:
+            - containerPort: 8080

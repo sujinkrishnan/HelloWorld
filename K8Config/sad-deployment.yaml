@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sad-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: sadPod
+  template:
+    metadata:
+      labels:
+        component: sadPod
+    spec:
+      containers:
+        - name: sad-container
+          image: sujinkrishnan/my-docker-poc:sad-image
+          ports:
+            - containerPort: 9091

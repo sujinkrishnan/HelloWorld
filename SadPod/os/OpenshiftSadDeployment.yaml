@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sad-service
+  namespace: sujinkrishnanu-dev
+spec:
+  selector:
+    matchLabels:
+      app: sad-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sad-service
+    spec:
+      containers:
+        - name: sad-service
+          image: >-
+            sujinkrishnan/my-docker-poc:sad-image
+          ports:
+            - containerPort: 9091

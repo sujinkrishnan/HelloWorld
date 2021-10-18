@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: happy-service
+  namespace: ocpoc01-dev
+spec:
+  selector:
+    matchLabels:
+      app: happy-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: happy-service
+    spec:
+      containers:
+        - name: happy-service
+          image: >-
+            sujinkrishnan/my-docker-poc:happy-image
+          ports:
+            - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: happyservice
+  namespace: ocpoc01-dev
+spec:
+  selector:
+    app: happy-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9090
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: happy-route
+  namespace: ocpoc01-dev
+spec:
+  path: /
+  to:
+    kind: Service
+    name: happyservice
+  port:
+    targetPort: 9090
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sad-service
+  namespace: ocpoc01-dev
+spec:
+  selector:
+    matchLabels:
+      app: sad-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sad-service
+    spec:
+      containers:
+        - name: sad-service
+          image: >-
+            sujinkrishnan/my-docker-poc:sad-image
+          ports:
+            - containerPort: 9091
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sadservice
+  namespace: ocpoc01-dev
+spec:
+  selector:
+    app: sad-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9091
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: sad-route
+  namespace: ocpoc01-dev
+spec:
+  path: /
+  to:
+    kind: Service
+    name: sadservice
+  port:
+    targetPort: 9091
