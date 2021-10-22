@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: happy-service
+  name: happy-deployment
   namespace: ocpoc01-dev
 spec:
   selector:
@@ -19,6 +19,7 @@ spec:
             sujinkrishnan/my-docker-poc:happy-image
           ports:
             - containerPort: 9090
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
@@ -45,11 +46,14 @@ spec:
     name: happyservice
   port:
     targetPort: 9090
+
+
+
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sad-service
+  name: sad-deployment
   namespace: ocpoc01-dev
 spec:
   selector:
@@ -67,6 +71,7 @@ spec:
             sujinkrishnan/my-docker-poc:sad-image
           ports:
             - containerPort: 9091
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
@@ -93,3 +98,84 @@ spec:
     name: sadservice
   port:
     targetPort: 9091
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-controller-deployment
+  namespace: ocpoc01-dev
+spec:
+  selector:
+    matchLabels:
+      app: message-controller-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: message-controller-service
+    spec:
+      containers:
+        - name: message-controller-service
+          image: >-
+            sujinkrishnan/my-docker-poc:message-controller-image
+          ports:
+            - containerPort: 8081
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: messagecontrollerservice
+  namespace: ocpoc01-dev
+spec:
+  selector:
+    app: message-controller-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: message-controller-route
+  namespace: ocpoc01-dev
+spec:
+  path: /
+  to:
+    kind: Service
+    name: messagecontrollerservice
+  port:
+    targetPort: 8081
+
+---
+#Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  namespace: ocpoc01-dev
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /
+spec:
+  rules:
+    - host: ingress-service-ocpoc01-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+      http:
+        paths:
+          - path: /happy
+            pathType: Prefix
+            backend:
+              service:
+                name: happyservice
+                port:
+                  number: 80
+          - path: /sad
+            pathType: Prefix
+            backend:
+              service:
+                name: sadservice
+                port:
+                  number: 80

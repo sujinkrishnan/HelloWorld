@@ -17,27 +17,34 @@ public class MessageControllerPodApplication {
 		SpringApplication.run(MessageControllerPodApplication.class, args);
 	}
 
+	@GetMapping(value = "/")
+	public String counter(){
+		System.out.println("Inside MessageControllerPodApplication ");
+		return "Usage /getMyMessage/{type}  type = HappyMessage / SadMessage";
+	}
 
 	@GetMapping("/getMyMessage/{type}")
 	public String getMessagesByType(@PathVariable(value = "type") String messageType) {
 
 		System.out.println("Inside getMessagesByType with value " + messageType);
 		if(messageType.equalsIgnoreCase("HappyMessage")) {
-			return getMessageFromService("happy-container","9090");
+			return getMessageFromService("happyservice","9090");
 		}else {
-			return  getMessageFromService("sad-container","9091");
+			return  getMessageFromService("sadservice","9091");
 
 		}
 	}
 
 	private String getMessageFromService(String serviceName,String port){
 
+		System.out.println("Inside getMessageFromService");
 		RestTemplate restTemplate = new RestTemplate();
 		String serviceUrl = "http://" + serviceName +":"+port+"/getMessage";
 		System.out.println("Service url "+ serviceUrl);
 
 		ResponseEntity<String> response
 				= restTemplate.getForEntity(serviceUrl , String.class);
+		System.out.println("Got response:" + response);
 		return response.getBody();
 	}
 }

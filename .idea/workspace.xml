@@ -4,11 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f152213-1f89-4f69-a185-92d6f25c5e14" name="Default Changelist" comment="" />
+    <list default="true" id="3f152213-1f89-4f69-a185-92d6f25c5e14" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K8Config/happy-loadbalancer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K8Config/happy-nodeport.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K8Config/ingress-message.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K8Config/sad-loadbalancer.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyPod/src/main/java/com/tutorials/my/docker/poc/HappyAppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyPod/src/main/java/com/tutorials/my/docker/poc/HappyAppApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8Config/sad-clusterip.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8Config/sad-clusterip.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageControllerPod/src/main/java/com/example/MessageControllerPod/MessageControllerPodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/MessageControllerPod/src/main/java/com/example/MessageControllerPod/MessageControllerPodApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SadPod/src/main/java/com/tutorials/SadPod/SadPodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SadPod/src/main/java/com/tutorials/SadPod/SadPodApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/os_app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/os_app.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -26,6 +41,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectId" id="1vyjDYGxzMCYjrNPQcuR0RCt10y" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,11 +52,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HappyPod" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/K8Config" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\My Git Modules\My POC\K8Config" />
       <recent name="D:\Workspace\My Git Modules\My POC\HappyPod" />
     </key>
   </component>
@@ -100,5 +120,16 @@
       <updated>1627541108461</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
